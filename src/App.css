@@ -1,5 +1,20 @@
 .App {
   text-align: center;
+  display: grid;
+  grid-template-rows: 100px 40px auto;
+  grid-template-areas: "header" "nav" "main";
+}
+header {
+  grid-area: "header";
+  border: 1px solid red;
+}
+.nav {
+  grid-area: "nav";
+  border: 1px solid blue;
+}
+.main {
+  grid-area: "main";
+  border: 1px solid green;
 }
 ul {
   list-style-type: none;

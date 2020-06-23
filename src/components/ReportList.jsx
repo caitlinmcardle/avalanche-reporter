@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Loader from "./Loader";
+import ReportCard from "./ReportCard";
 
 export default class ReportList extends Component {
   state = {
@@ -28,13 +29,7 @@ export default class ReportList extends Component {
       <main>
         <h2>All Avalanche Reports</h2>
         {reports.map((report) => {
-          return (
-            <article key={report.id}>
-              <h4>Date: {report.Date}</h4>
-              <p>Area: {report.area.Name}</p>
-              <p>Size: {report.Size}</p>
-            </article>
-          );
+          return <ReportCard key={report.id} {...report} />;
         })}
       </main>
     );

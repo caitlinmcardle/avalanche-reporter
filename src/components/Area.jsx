@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import Loader from "./Loader";
 import ReportCard from "./ReportCard";
+import AreaMap from "./AreaMap";
 
 export default class Area extends Component {
   state = {
@@ -64,6 +65,7 @@ export default class Area extends Component {
     const { areas, selectedReports } = this.state;
     return (
       <main className="main">
+        <AreaMap selectedReports={selectedReports} />
         <form className="form" onSubmit={this.handleSubmit}>
           <p>Choose an area:</p>
           <select name="area" onChange={this.handleInput}>

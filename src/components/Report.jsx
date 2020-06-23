@@ -13,7 +13,6 @@ export default class Report extends Component {
   }
 
   getReport = () => {
-    console.log(this.props);
     axios
       .get(
         `https://cmc-final-project.herokuapp.com/avalanche-reports/${this.props.report_id}`

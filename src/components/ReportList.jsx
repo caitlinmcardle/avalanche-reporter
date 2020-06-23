@@ -17,9 +17,7 @@ export default class ReportList extends Component {
     axios
       .get("https://cmc-final-project.herokuapp.com/avalanche-reports")
       .then(({ data }) => {
-        this.setState({ reports: data, isLoading: false }, () => {
-          console.log(this.state);
-        });
+        this.setState({ reports: data, isLoading: false });
       });
   };
   render() {

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import axios from "axios";
 import Loader from "./Loader";
 import ReportCard from "./ReportCard";
+import * as api from "../utils/api";
 
 export default class ReportList extends Component {
   state = {
@@ -10,16 +10,11 @@ export default class ReportList extends Component {
   };
 
   componentDidMount() {
-    this.getReports();
+    api.getAllReports().then(({ data }) => {
+      this.setState({ reports: data, isLoading: false });
+    });
   }
 
-  getReports = () => {
-    axios
-      .get("https://cmc-final-project.herokuapp.com/avalanche-reports")
-      .then(({ data }) => {
-        this.setState({ reports: data, isLoading: false });
-      });
-  };
   render() {
     if (this.state.isLoading) return <Loader />;
     const { reports } = this.state;

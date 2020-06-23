@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import axios from "axios";
 import { Map, Marker, TileLayer } from "react-leaflet";
 import Loader from "./Loader";
+import * as api from "../utils/api";
 
 export default class Report extends Component {
   state = {
@@ -10,18 +10,11 @@ export default class Report extends Component {
   };
 
   componentDidMount() {
-    this.getReport();
+    api.getOneReport(this.props.report_id).then(({ data }) => {
+      this.setState({ report: data, isLoading: false });
+    });
   }
 
-  getReport = () => {
-    axios
-      .get(
-        `https://cmc-final-project.herokuapp.com/avalanche-reports/${this.props.report_id}`
-      )
-      .then(({ data }) => {
-        this.setState({ report: data, isLoading: false });
-      });
-  };
   render() {
     if (this.state.isLoading) return <Loader />;
     const {

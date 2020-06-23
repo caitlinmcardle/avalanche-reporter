@@ -14,7 +14,7 @@ function App() {
     <div className="App">
       <Title />
       <NavBar />
-      <Router>
+      <Router className="router">
         <Area path="/" />
         <ReportList path="/reports" />
         <AddReport path="/add-report" />

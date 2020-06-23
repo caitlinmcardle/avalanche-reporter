@@ -19,7 +19,7 @@ export default class ReportList extends Component {
     if (this.state.isLoading) return <Loader />;
     const { reports } = this.state;
     return (
-      <main>
+      <main className="main">
         <h2>All Avalanche Reports</h2>
         {reports.map((report) => {
           return <ReportCard key={report.id} {...report} />;

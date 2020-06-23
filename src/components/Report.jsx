@@ -32,7 +32,7 @@ export default class Report extends Component {
       Longitude,
     } = this.state.report;
     return (
-      <main>
+      <main className="main">
         <Map center={[Latitude, Longitude]} zoom={8}>
           <Marker key={id} position={[Latitude, Longitude]} />
           <TileLayer

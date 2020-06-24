@@ -24,33 +24,23 @@ export default class Area extends Component {
   handleSubmit = (submitEvent) => {
     submitEvent.preventDefault();
     api.getAreaReports(this.state.selectedAreaId).then(({ data }) =>
-      this.setState(
-        (currentState) => {
-          return { selectedReports: data };
-        },
-        () => {
-          console.log(this.state);
-        }
-      )
+      this.setState((currentState) => {
+        return { selectedReports: data };
+      })
     );
   };
 
   handleInput = (inputEvent) => {
     const areaId = inputEvent.target.value;
-    this.setState(
-      (currentState) => {
-        return { selectedAreaId: areaId };
-      },
-      () => {
-        console.log(this.state);
-      }
-    );
+    this.setState((currentState) => {
+      return { selectedAreaId: areaId };
+    });
   };
 
   setActiveReport = (report) => {
     this.setState((currentState) => {
       return { activeReport: report };
-    }, console.log(this.state));
+    });
   };
 
   render() {

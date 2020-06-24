@@ -29,17 +29,30 @@ export default class AddReport extends Component {
     event.preventDefault();
     axios
       .post("https://cmc-final-project.herokuapp.com/avalanche-reports", {
-        ...this.state,
+        area: this.state.area,
+        Date: this.state.Date,
+        Time: `${this.state.Time}:00`,
+        Size: this.state.Size,
+        Age: this.state.Age,
+        Elevation: this.state.Elevation,
+        Trigger: this.state.Trigger,
+        Type: this.state.Type,
+        Aspect: this.state.Aspect,
+        Depth: this.state.Depth,
+        Width: this.state.Width,
+        Path: this.state.Path,
+        Latitude: this.state.Latitude,
+        Longitude: this.state.Longitude,
       })
       .then(({ data }) => {
         console.log(data);
-      });
+      })
+      .catch((error) => console.dir(error));
     this.setState({ isLoading: true });
   };
 
   render() {
     if (this.state.isLoading) return <Loader />;
-    console.log(this.props);
     const { areas } = this.state;
     return (
       <main className="main">
@@ -76,12 +89,17 @@ export default class AddReport extends Component {
 
           <label>
             Age
-            <input type="number" name="Age" onChange={this.handleInput} />
+            <input
+              type="number"
+              name="Age"
+              onChange={this.handleInput}
+              required
+            />
           </label>
           <label>
             Elevation
             <input
-              type="number"
+              type="text"
               name="Elevation"
               onChange={this.handleInput}
               required
@@ -116,21 +134,36 @@ export default class AddReport extends Component {
           </label>
           <label>
             Depth
-            <input type="text" name="Depth" onChange={this.handleInput} />
+            <input
+              type="number"
+              name="Depth"
+              onChange={this.handleInput}
+              required
+            />
           </label>
           <label>
             Width
-            <input type="text" name="Width" onChange={this.handleInput} />
+            <input
+              type="number"
+              name="Width"
+              onChange={this.handleInput}
+              required
+            />
           </label>
           <label>
             Path
-            <input type="text" name="Path" onChange={this.handleInput} />
+            <input
+              type="number"
+              name="Path"
+              onChange={this.handleInput}
+              required
+            />
           </label>
           <label>
             Latitude
             <input
               type="float"
-              name="Latitdue"
+              name="Latitude"
               onChange={this.handleInput}
               required
             />

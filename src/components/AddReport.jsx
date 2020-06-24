@@ -1,9 +1,27 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 export default class AddReport extends Component {
   state = {};
 
-  handleInput = () => {};
+  handleInput = (event) => {
+    const { name, value } = event.target;
+    this.setState((currentState) => {
+      return { [name]: value };
+    }, console.log(this.state));
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    axios
+      .post("https://cmc-final-project.herokuapp.com/avalanche-reports", {
+        ...this.state,
+      })
+      .then(({ data }) => {
+        console.log(data);
+      });
+    this.setState({});
+  };
 
   render() {
     return (

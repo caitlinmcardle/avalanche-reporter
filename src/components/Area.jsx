@@ -54,11 +54,11 @@ export default class Area extends Component {
           activeReport={activeReport}
           setActiveReport={this.setActiveReport}
         />
-        <AreaDropdown
-          areas={areas}
-          handleSubmit={this.handleSubmit}
-          handleInput={this.handleInput}
-        />
+        <form className="dropdown-form" onSubmit={this.handleSubmit}>
+          <AreaDropdown areas={areas} handleInput={this.handleInput} />
+          <button>Go</button>
+        </form>
+
         {selectedReports.map((report) => {
           return <ReportCard key={report.id} {...report} />;
         })}

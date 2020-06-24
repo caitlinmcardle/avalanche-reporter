@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import * as api from "../utils/api";
 import Loader from "./Loader";
+import AreaDropdown from "./AreaDropdown";
 
 export default class AddReport extends Component {
   state = { isLoading: true };
@@ -38,11 +39,13 @@ export default class AddReport extends Component {
 
   render() {
     if (this.state.isLoading) return <Loader />;
+    console.log(this.props);
     const { areas } = this.state;
     return (
       <main className="main">
         <h2>Report an Avalanche:</h2>
         <form className="add-report-form">
+          <AreaDropdown areas={areas} handleInput={this.handleInput} />
           <label>
             Date
             <input
@@ -70,20 +73,7 @@ export default class AddReport extends Component {
               required
             />
           </label>
-          <p className="add-dropdown-label">Choose an area:</p>
-          <select
-            className="add-report-dropdown"
-            name="area_id"
-            onChange={this.handleInput}
-          >
-            {areas.map((area) => {
-              return (
-                <option key={area.id} value={area.id}>
-                  {area.Name}
-                </option>
-              );
-            })}
-          </select>
+
           <label>
             Age
             <input type="number" name="Age" onChange={this.handleInput} />

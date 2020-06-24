@@ -1,8 +1,8 @@
 import React from "react";
 
-export default function AreaDropdown({ areas, handleSubmit, handleInput }) {
+export default function AreaDropdown({ areas, handleInput }) {
   return (
-    <form className="form" onSubmit={handleSubmit}>
+    <>
       <p>Choose an area:</p>
       <select name="area" onChange={handleInput}>
         {areas.map((area) => {
@@ -13,7 +13,6 @@ export default function AreaDropdown({ areas, handleSubmit, handleInput }) {
           );
         })}
       </select>
-      <button>Go</button>
-    </form>
+    </>
   );
 }

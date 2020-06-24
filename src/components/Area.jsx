@@ -10,6 +10,7 @@ export default class Area extends Component {
     selectedAreaId: "1",
     isLoading: true,
     selectedReports: [],
+    activeReport: null,
   };
 
   componentDidMount() {
@@ -46,12 +47,22 @@ export default class Area extends Component {
     );
   };
 
+  setActiveReport = (report) => {
+    this.setState((currentState) => {
+      return { activeReport: report };
+    }, console.log(this.state));
+  };
+
   render() {
     if (this.state.isLoading) return <Loader />;
-    const { areas, selectedReports } = this.state;
+    const { areas, selectedReports, activeReport } = this.state;
     return (
       <main className="main">
-        <AreaMap selectedReports={selectedReports} />
+        <AreaMap
+          selectedReports={selectedReports}
+          activeReport={activeReport}
+          setActiveReport={this.setActiveReport}
+        />
         <form className="form" onSubmit={this.handleSubmit}>
           <p>Choose an area:</p>
           <select name="area" onChange={this.handleInput}>

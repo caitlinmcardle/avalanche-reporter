@@ -1,7 +1,12 @@
 import React from "react";
-import { Map, Marker, TileLayer } from "react-leaflet";
+import { Map, Marker, TileLayer, Popup } from "react-leaflet";
+import { Link } from "@reach/router";
 
-export default function AreaMap({ selectedReports }) {
+export default function AreaMap({
+  selectedReports,
+  activeReport,
+  setActiveReport,
+}) {
   return (
     <section>
       <Map center={[50.3, -119.2]} zoom={5}>
@@ -9,11 +14,27 @@ export default function AreaMap({ selectedReports }) {
           <Marker
             key={report.id}
             position={[report.Latitude, report.Longitude]}
-            // onClick={() => {
-            //   setActiveReport(report);
-            // }}
+            onClick={() => {
+              setActiveReport(report);
+            }}
           />
         ))}
+        {activeReport && (
+          <Popup
+            position={[activeReport.Latitude, activeReport.Longitude]}
+            onClose={() => {
+              setActiveReport(null);
+            }}
+          >
+            <div>
+              <p>Date: {activeReport.Date}</p>
+              <p>Time: {activeReport.Time}</p>
+              <Link to={`/reports/${activeReport.id}`}>
+                <p>Full report</p>
+              </Link>
+            </div>
+          </Popup>
+        )}
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

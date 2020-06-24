@@ -29,11 +29,14 @@ li {
   width: 60%;
   height: 40vh;
   margin: 20px;
-  justify-self: center;
 }
 .add-report-form {
+  text-align: left;
   display: flex;
   flex-direction: column;
+}
+label {
+  margin: 10px;
 }
 input {
   margin: 10px;
@@ -45,4 +48,12 @@ input {
   width: 25%;
   display: flex;
   justify-content: center;
+}
+.add-report-dropdown {
+  width: 25%;
+  margin: 10px;
+  text-align: center;
+}
+.add-dropdown-label {
+  margin: 10px;
 }

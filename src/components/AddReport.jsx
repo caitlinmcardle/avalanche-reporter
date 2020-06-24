@@ -1,14 +1,27 @@
 import React, { Component } from "react";
 import axios from "axios";
+import * as api from "../utils/api";
+import Loader from "./Loader";
 
 export default class AddReport extends Component {
-  state = {};
+  state = { isLoading: true };
+
+  componentDidMount() {
+    api.getAreas().then(({ data }) =>
+      this.setState((currentState) => {
+        return { areas: data, isLoading: false };
+      }, console.log(this.state))
+    );
+  }
 
   handleInput = (event) => {
     const { name, value } = event.target;
-    this.setState((currentState) => {
-      return { [name]: value };
-    }, console.log(this.state));
+    this.setState(
+      (currentState) => {
+        return { [name]: value };
+      },
+      () => console.log(this.state)
+    );
   };
 
   handleSubmit = (event) => {
@@ -20,10 +33,12 @@ export default class AddReport extends Component {
       .then(({ data }) => {
         console.log(data);
       });
-    this.setState({});
+    this.setState({ isLoading: true });
   };
 
   render() {
+    if (this.state.isLoading) return <Loader />;
+    const { areas } = this.state;
     return (
       <main className="main">
         <h2>Report an Avalanche:</h2>
@@ -55,15 +70,20 @@ export default class AddReport extends Component {
               required
             />
           </label>
-          <label>
-            Area
-            <input
-              type="text"
-              name="area"
-              onChange={this.handleInput}
-              required
-            />
-          </label>
+          <p className="add-dropdown-label">Choose an area:</p>
+          <select
+            className="add-report-dropdown"
+            name="area_id"
+            onChange={this.handleInput}
+          >
+            {areas.map((area) => {
+              return (
+                <option key={area.id} value={area.id}>
+                  {area.Name}
+                </option>
+              );
+            })}
+          </select>
           <label>
             Age
             <input type="number" name="Age" onChange={this.handleInput} />

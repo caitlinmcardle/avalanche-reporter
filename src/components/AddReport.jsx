@@ -44,7 +44,7 @@ export default class AddReport extends Component {
     return (
       <main className="main">
         <h2>Report an Avalanche:</h2>
-        <form className="add-report-form">
+        <form className="add-report-form" onSubmit={this.handleSubmit}>
           <AreaDropdown areas={areas} handleInput={this.handleInput} />
           <label>
             Date

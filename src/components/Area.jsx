@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import axios from "axios";
 import Loader from "./Loader";
 import ReportCard from "./ReportCard";
 import AreaMap from "./AreaMap";
+import * as api from "../utils/api.js";
 
 export default class Area extends Component {
   state = {
@@ -13,39 +13,25 @@ export default class Area extends Component {
   };
 
   componentDidMount() {
-    this.getAreas();
+    api.getAreas().then(({ data }) =>
+      this.setState((currentState) => {
+        return { areas: data, isLoading: false };
+      })
+    );
   }
-
-  getAreas = () => {
-    axios
-      .get("https://cmc-final-project.herokuapp.com/areas")
-      .then(({ data }) =>
-        this.setState((currentState) => {
-          return { areas: data, isLoading: false };
-        })
-      );
-  };
-
-  getAreaReports = () => {
-    axios
-      .get(
-        `https://cmc-final-project.herokuapp.com/avalanche-reports/?area.id=${this.state.selectedAreaId}`
-      )
-      .then(({ data }) =>
-        this.setState(
-          (currentState) => {
-            return { selectedReports: data };
-          },
-          () => {
-            console.log(this.state);
-          }
-        )
-      );
-  };
 
   handleSubmit = (submitEvent) => {
     submitEvent.preventDefault();
-    this.getAreaReports();
+    api.getAreaReports(this.state.selectedAreaId).then(({ data }) =>
+      this.setState(
+        (currentState) => {
+          return { selectedReports: data };
+        },
+        () => {
+          console.log(this.state);
+        }
+      )
+    );
   };
 
   handleInput = (inputEvent) => {

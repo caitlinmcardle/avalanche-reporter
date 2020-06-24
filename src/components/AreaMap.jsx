@@ -4,7 +4,7 @@ import { Map, Marker, TileLayer } from "react-leaflet";
 export default function AreaMap({ selectedReports }) {
   return (
     <section>
-      <Map center={[50.3, -119.2]} zoom={6}>
+      <Map center={[50.3, -119.2]} zoom={5}>
         {selectedReports.map((report) => (
           <Marker
             key={report.id}

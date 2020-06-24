@@ -3,6 +3,7 @@ import Loader from "./Loader";
 import ReportCard from "./ReportCard";
 import AreaMap from "./AreaMap";
 import * as api from "../utils/api.js";
+import AreaDropdown from "./AreaDropdown";
 
 export default class Area extends Component {
   state = {
@@ -53,19 +54,11 @@ export default class Area extends Component {
           activeReport={activeReport}
           setActiveReport={this.setActiveReport}
         />
-        <form className="form" onSubmit={this.handleSubmit}>
-          <p>Choose an area:</p>
-          <select name="area" onChange={this.handleInput}>
-            {areas.map((area) => {
-              return (
-                <option key={area.id} value={area.id}>
-                  {area.Name}
-                </option>
-              );
-            })}
-          </select>
-          <button>Go</button>
-        </form>
+        <AreaDropdown
+          areas={areas}
+          handleSubmit={this.handleSubmit}
+          handleInput={this.handleInput}
+        />
         {selectedReports.map((report) => {
           return <ReportCard key={report.id} {...report} />;
         })}

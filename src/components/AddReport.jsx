@@ -8,7 +8,6 @@ import { navigate } from "@reach/router";
 export default class AddReport extends Component {
   state = {
     isLoading: true,
-    posted: false,
     Date: "",
     Time: "",
     Size: "",
@@ -67,7 +66,6 @@ export default class AddReport extends Component {
       })
       .catch((error) => console.dir(error));
     this.setState({
-      posted: true,
       Date: "",
       Time: "",
       Size: "",
@@ -89,7 +87,6 @@ export default class AddReport extends Component {
     if (this.state.isLoading) return <Loader />;
     const {
       areas,
-      posted,
       Date,
       Time,
       Size,
@@ -107,7 +104,6 @@ export default class AddReport extends Component {
     return (
       <main className="main">
         <h2>Report an Avalanche:</h2>
-        {posted && <h4>Thank you for posting!</h4>}
         <form className="add-report-form" onSubmit={this.handleSubmit}>
           <AreaDropdown areas={areas} handleInput={this.handleInput} />
           <label>

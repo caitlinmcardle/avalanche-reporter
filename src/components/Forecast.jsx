@@ -38,7 +38,7 @@ export default class Forecast extends Component {
 
   render() {
     if (this.state.isLoading) return <Loader />;
-    const { areas, forecast } = this.state;
+    const { areas } = this.state;
 
     return (
       <main className="main">

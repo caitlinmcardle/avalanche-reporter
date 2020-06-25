@@ -4,7 +4,7 @@ import Loader from "./Loader";
 import * as api from "../utils/api.js";
 
 export default class Forecast extends Component {
-  state = { forecast: {}, areas: [], selectedAreaId: "", isLoading: true };
+  state = { forecast: {}, areas: [], selectedAreaId: "1", isLoading: true };
 
   componentDidMount() {
     api.getAreas().then(({ data }) =>

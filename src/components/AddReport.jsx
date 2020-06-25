@@ -3,6 +3,7 @@ import axios from "axios";
 import * as api from "../utils/api";
 import Loader from "./Loader";
 import AreaDropdown from "./AreaDropdown";
+import { navigate } from "@reach/router";
 
 export default class AddReport extends Component {
   state = {
@@ -81,6 +82,7 @@ export default class AddReport extends Component {
       Latitude: "",
       Longitude: "",
     });
+    navigate(`/reports`);
   };
 
   render() {

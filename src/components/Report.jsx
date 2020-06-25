@@ -49,6 +49,9 @@ export default class Report extends Component {
         <p>Trigger: {Trigger}</p>
         <p>Type: {Type}</p>
         <p>Aspect: {Aspect}</p>
+        <p>
+          Coordinates: [{Latitude}, {Longitude}]
+        </p>
       </main>
     );
   }

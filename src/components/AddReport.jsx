@@ -28,18 +28,15 @@ export default class AddReport extends Component {
     api.getAreas().then(({ data }) =>
       this.setState((currentState) => {
         return { areas: data, isLoading: false };
-      }, console.log(this.state))
+      })
     );
   }
 
   handleInput = (event) => {
     const { name, value } = event.target;
-    this.setState(
-      (currentState) => {
-        return { [name]: value };
-      },
-      () => console.log(this.state)
-    );
+    this.setState((currentState) => {
+      return { [name]: value };
+    });
   };
 
   handleSubmit = (event) => {
@@ -62,8 +59,6 @@ export default class AddReport extends Component {
         Longitude: this.state.Longitude,
       })
       .then(({ data }) => {
-        console.log(data);
-        console.log(data.id);
         const id = data.id;
         navigate(`/reports/${id}`);
       })

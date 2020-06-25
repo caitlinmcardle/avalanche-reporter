@@ -5,7 +5,24 @@ import Loader from "./Loader";
 import AreaDropdown from "./AreaDropdown";
 
 export default class AddReport extends Component {
-  state = { isLoading: true };
+  state = {
+    isLoading: true,
+    posted: false,
+    Date: "",
+    Time: "",
+    Size: "",
+    Age: "",
+    Elevation: "",
+    Trigger: "",
+    Type: "",
+    Aspect: "",
+    Depth: "",
+    Width: "",
+    Path: "",
+    Latitude: "",
+    Longitude: "",
+    area: "1",
+  };
 
   componentDidMount() {
     api.getAreas().then(({ data }) =>
@@ -48,15 +65,47 @@ export default class AddReport extends Component {
         console.log(data);
       })
       .catch((error) => console.dir(error));
-    this.setState({ isLoading: true });
+    this.setState({
+      posted: true,
+      Date: "",
+      Time: "",
+      Size: "",
+      Age: "",
+      Elevation: "",
+      Trigger: "",
+      Type: "",
+      Aspect: "",
+      Depth: "",
+      Width: "",
+      Path: "",
+      Latitude: "",
+      Longitude: "",
+    });
   };
 
   render() {
     if (this.state.isLoading) return <Loader />;
-    const { areas } = this.state;
+    const {
+      areas,
+      posted,
+      Date,
+      Time,
+      Size,
+      Age,
+      Elevation,
+      Trigger,
+      Type,
+      Aspect,
+      Depth,
+      Width,
+      Path,
+      Latitude,
+      Longitude,
+    } = this.state;
     return (
       <main className="main">
         <h2>Report an Avalanche:</h2>
+        {posted && <h4>Thank you for posting!</h4>}
         <form className="add-report-form" onSubmit={this.handleSubmit}>
           <AreaDropdown areas={areas} handleInput={this.handleInput} />
           <label>
@@ -65,6 +114,7 @@ export default class AddReport extends Component {
               type="date"
               name="Date"
               onChange={this.handleInput}
+              value={Date}
               required
             />
           </label>
@@ -74,6 +124,7 @@ export default class AddReport extends Component {
               type="time"
               name="Time"
               onChange={this.handleInput}
+              value={Time}
               required
             />
           </label>
@@ -83,6 +134,7 @@ export default class AddReport extends Component {
               type="float"
               name="Size"
               onChange={this.handleInput}
+              value={Size}
               required
             />
           </label>
@@ -93,6 +145,7 @@ export default class AddReport extends Component {
               type="number"
               name="Age"
               onChange={this.handleInput}
+              value={Age}
               required
             />
           </label>
@@ -102,6 +155,7 @@ export default class AddReport extends Component {
               type="text"
               name="Elevation"
               onChange={this.handleInput}
+              value={Elevation}
               required
             />
           </label>
@@ -111,6 +165,7 @@ export default class AddReport extends Component {
               type="text"
               name="Trigger"
               onChange={this.handleInput}
+              value={Trigger}
               required
             />
           </label>
@@ -120,6 +175,7 @@ export default class AddReport extends Component {
               type="text"
               name="Type"
               onChange={this.handleInput}
+              value={Type}
               required
             />
           </label>
@@ -129,6 +185,7 @@ export default class AddReport extends Component {
               type="text"
               name="Aspect"
               onChange={this.handleInput}
+              value={Aspect}
               required
             />
           </label>
@@ -138,6 +195,7 @@ export default class AddReport extends Component {
               type="number"
               name="Depth"
               onChange={this.handleInput}
+              value={Depth}
               required
             />
           </label>
@@ -147,6 +205,7 @@ export default class AddReport extends Component {
               type="number"
               name="Width"
               onChange={this.handleInput}
+              value={Width}
               required
             />
           </label>
@@ -156,6 +215,7 @@ export default class AddReport extends Component {
               type="number"
               name="Path"
               onChange={this.handleInput}
+              value={Path}
               required
             />
           </label>
@@ -165,6 +225,7 @@ export default class AddReport extends Component {
               type="float"
               name="Latitude"
               onChange={this.handleInput}
+              value={Latitude}
               required
             />
           </label>
@@ -174,6 +235,7 @@ export default class AddReport extends Component {
               type="float"
               name="Longitude"
               onChange={this.handleInput}
+              value={Longitude}
               required
             />
           </label>

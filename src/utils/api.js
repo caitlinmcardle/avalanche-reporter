@@ -16,3 +16,7 @@ export const getAreas = () => {
 export const getAreaReports = (selectedAreaId) => {
   return axios.get(baseURL + `avalanche-reports/?area.id=${selectedAreaId}`);
 };
+
+export const getForecast = (selectedAreaId) => {
+  return axios.get(baseURL + `avalanche-forecasts?areas=${selectedAreaId}`);
+};

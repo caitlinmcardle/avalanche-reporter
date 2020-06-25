@@ -63,6 +63,9 @@ export default class AddReport extends Component {
       })
       .then(({ data }) => {
         console.log(data);
+        console.log(data.id);
+        const id = data.id;
+        navigate(`/reports/${id}`);
       })
       .catch((error) => console.dir(error));
     this.setState({
@@ -80,7 +83,6 @@ export default class AddReport extends Component {
       Latitude: "",
       Longitude: "",
     });
-    navigate(`/reports`);
   };
 
   render() {

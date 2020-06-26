@@ -2,21 +2,33 @@ import React, { Component } from "react";
 import { Map, Marker, TileLayer } from "react-leaflet";
 import Loader from "./Loader";
 import * as api from "../utils/api";
+import ErrorDisplayer from "./ErrorDisplayer";
 
 export default class Report extends Component {
   state = {
     report: {},
     isLoading: true,
+    err: null,
   };
 
   componentDidMount() {
-    api.getOneReport(this.props.report_id).then(({ data }) => {
-      this.setState({ report: data, isLoading: false });
-    });
+    api
+      .getOneReport(this.props.report_id)
+      .then(({ data }) => {
+        this.setState({ report: data, isLoading: false });
+      })
+      .catch((error) => {
+        this.setState({
+          err: `Sorry, we can't find a report with ID ${this.props.report_id}`,
+          isLoading: false,
+        });
+      });
   }
 
   render() {
     if (this.state.isLoading) return <Loader />;
+    const { err } = this.state;
+    if (err) return <ErrorDisplayer err={err} />;
     const {
       id,
       Date,

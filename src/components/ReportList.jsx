@@ -8,6 +8,7 @@ export default class ReportList extends Component {
   state = {
     reports: [],
     isLoading: true,
+    err: null,
   };
 
   componentDidMount() {

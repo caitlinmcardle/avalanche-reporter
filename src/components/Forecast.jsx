@@ -1,10 +1,17 @@
 import React, { Component } from "react";
 import AreaDropdown from "./AreaDropdown";
 import Loader from "./Loader";
+import ErrorDisplayer from "./ErrorDisplayer";
 import * as api from "../utils/api.js";
 
 export default class Forecast extends Component {
-  state = { forecasts: [], areas: [], selectedAreaId: "1", isLoading: true };
+  state = {
+    forecasts: [],
+    areas: [],
+    selectedAreaId: "1",
+    isLoading: true,
+    err: null,
+  };
 
   componentDidMount() {
     api.getAreas().then(({ data }) =>
@@ -23,16 +30,22 @@ export default class Forecast extends Component {
 
   handleSubmit = (submitEvent) => {
     submitEvent.preventDefault();
-    api.getForecast(this.state.selectedAreaId).then(({ data }) =>
-      this.setState((currentState) => {
-        return { forecasts: data };
-      })
-    );
+    api
+      .getForecast(this.state.selectedAreaId)
+      .then(({ data }) =>
+        this.setState((currentState) => {
+          return { forecasts: data };
+        })
+      )
+      .catch((error) =>
+        this.setState({ err: "Sorry we can't find a forecast for this area" })
+      );
   };
 
   render() {
     if (this.state.isLoading) return <Loader />;
-    const { areas, forecasts } = this.state;
+    const { areas, forecasts, err } = this.state;
+    if (err) return <ErrorDisplayer err={err} />;
 
     return (
       <main className="main">

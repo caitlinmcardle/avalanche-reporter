@@ -42,7 +42,7 @@ export default class Report extends Component {
         </Map>
         <h2>Date: {Date}</h2>
         <h3>Area: {area.Name}</h3>
-        <p>Time: {Time}</p>
+        <p>Time: {Time.slice(0, 5)}</p>
         <p>Size: {Size}</p>
         <p>Age: {Age} hr(s)</p>
         <p>Elevation: {Elevation} m</p>

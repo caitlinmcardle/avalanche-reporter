@@ -28,7 +28,7 @@ export default function AreaMap({
           >
             <div>
               <p>Date: {activeReport.Date}</p>
-              <p>Time: {activeReport.Time}</p>
+              <p>Time: {activeReport.Time.slice(0, 5)}</p>
               <Link to={`/reports/${activeReport.id}`}>
                 <p>Full report</p>
               </Link>

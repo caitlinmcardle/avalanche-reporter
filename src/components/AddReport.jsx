@@ -4,10 +4,12 @@ import * as api from "../utils/api";
 import Loader from "./Loader";
 import AreaDropdown from "./AreaDropdown";
 import { navigate } from "@reach/router";
+import ErrorDisplayer from "./ErrorDisplayer";
 
 export default class AddReport extends Component {
   state = {
     isLoading: true,
+    err: null,
     Date: "",
     Time: "",
     Size: "",
@@ -62,7 +64,11 @@ export default class AddReport extends Component {
         const id = data.id;
         navigate(`/reports/${id}`);
       })
-      .catch((error) => console.dir(error));
+      .catch((error) =>
+        this.setState({
+          err: `Sorry we could not post your report, please try again`,
+        })
+      );
     this.setState({
       Date: "",
       Time: "",
@@ -82,6 +88,8 @@ export default class AddReport extends Component {
 
   render() {
     if (this.state.isLoading) return <Loader />;
+    const { err } = this.state;
+    if (err) return <ErrorDisplayer err={err} />;
     const {
       areas,
       Date,

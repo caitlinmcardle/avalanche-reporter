@@ -8,6 +8,7 @@ import ReportList from "./components/ReportList";
 import AddReport from "./components/AddReport";
 import Forecast from "./components/Forecast";
 import Report from "./components/Report";
+import ErrorDisplayer from "./components/ErrorDisplayer";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <AddReport path="/add-report" />
         <Forecast path="forecast" />
         <Report path="/reports/:report_id" />
+        <ErrorDisplayer default />
       </Router>
     </div>
   );

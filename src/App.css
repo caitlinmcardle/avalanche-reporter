@@ -26,9 +26,9 @@ li {
   padding: 10px;
 }
 .leaflet-container {
-  width: 60%;
-  height: 40vh;
-  margin: 20px;
+  width: 100vw;
+  height: 70vh;
+  margin: 0;
 }
 .add-report-form {
   text-align: left;

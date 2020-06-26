@@ -4,7 +4,7 @@ import Loader from "./Loader";
 import * as api from "../utils/api.js";
 
 export default class Forecast extends Component {
-  state = { forecast: {}, areas: [], selectedAreaId: "1", isLoading: true };
+  state = { forecasts: [], areas: [], selectedAreaId: "1", isLoading: true };
 
   componentDidMount() {
     api.getAreas().then(({ data }) =>
@@ -16,29 +16,23 @@ export default class Forecast extends Component {
 
   handleInput = (inputEvent) => {
     const areaId = inputEvent.target.value;
-    this.setState(
-      (currentState) => {
-        return { selectedAreaId: areaId };
-      },
-      () => console.log(this.state)
-    );
+    this.setState((currentState) => {
+      return { selectedAreaId: areaId };
+    });
   };
 
   handleSubmit = (submitEvent) => {
     submitEvent.preventDefault();
     api.getForecast(this.state.selectedAreaId).then(({ data }) =>
-      this.setState(
-        (currentState) => {
-          return { forecast: data };
-        },
-        () => console.log(this.state)
-      )
+      this.setState((currentState) => {
+        return { forecasts: data };
+      })
     );
   };
 
   render() {
     if (this.state.isLoading) return <Loader />;
-    const { areas } = this.state;
+    const { areas, forecasts } = this.state;
 
     return (
       <main className="main">
@@ -47,6 +41,14 @@ export default class Forecast extends Component {
           <AreaDropdown areas={areas} handleInput={this.handleInput} />
           <button>Go</button>
         </form>
+        {forecasts.map(({ id, danger_level, mountain_area }) => (
+          <article key={id}>
+            <h3>
+              {mountain_area}: {danger_level.name}
+            </h3>
+            <p>{danger_level.advice}</p>
+          </article>
+        ))}
       </main>
     );
   }

@@ -9,7 +9,7 @@ export default function AreaMap({
 }) {
   return (
     <section>
-      <Map center={[51.3, -118.5]} zoom={6}>
+      <Map center={[51.3, -118.5]} zoom={6.4}>
         {selectedReports.map((report) => (
           <Marker
             key={report.id}

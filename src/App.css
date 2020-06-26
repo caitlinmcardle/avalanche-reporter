@@ -76,6 +76,11 @@ li {
   color: white;
 }
 
+option {
+  color: black;
+  padding: 12px 16px;
+}
+
 .leaflet-container {
   width: 100vw;
   height: 70vh;

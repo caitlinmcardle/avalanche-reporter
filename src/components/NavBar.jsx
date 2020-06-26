@@ -4,23 +4,27 @@ import { Link } from "@reach/router";
 export default function NavBar() {
   return (
     <nav className="nav">
-      <ul>
-        <li>
+      <ul className="nav-ul">
+        <li className="nav-li">
           <Link key="home" to="/">
             Home
           </Link>
         </li>
-        <li>
+        <li className="nav-li">
           <Link key="forecasts" to="/forecast">
             Forecasts
           </Link>
         </li>
-        <Link key="addAvalanche" to="/add-report">
-          <li>Report an Avalanche</li>
-        </Link>
-        <Link key="reportList" to="/reports">
-          <li>All Avalanche Reports</li>
-        </Link>
+        <li className="nav-li">
+          <Link key="addAvalanche" to="/add-report">
+            Report an Avalanche
+          </Link>
+        </li>
+        <li className="nav-li">
+          <Link key="reportList" to="/reports">
+            All Avalanche Reports
+          </Link>
+        </li>
       </ul>
     </nav>
   );

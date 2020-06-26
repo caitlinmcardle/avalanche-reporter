@@ -6,22 +6,22 @@ export default function NavBar() {
     <nav className="nav">
       <ul className="nav-ul">
         <li className="nav-li">
-          <Link key="home" to="/">
+          <Link className="nav-link" key="home" to="/">
             Home
           </Link>
         </li>
         <li className="nav-li">
-          <Link key="forecasts" to="/forecast">
+          <Link className="nav-link" key="forecasts" to="/forecast">
             Forecasts
           </Link>
         </li>
         <li className="nav-li">
-          <Link key="addAvalanche" to="/add-report">
+          <Link className="nav-link" key="addAvalanche" to="/add-report">
             Report an Avalanche
           </Link>
         </li>
         <li className="nav-li">
-          <Link key="reportList" to="/reports">
+          <Link className="nav-link" key="reportList" to="/reports">
             All Avalanche Reports
           </Link>
         </li>

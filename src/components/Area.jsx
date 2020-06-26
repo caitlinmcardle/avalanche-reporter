@@ -56,7 +56,7 @@ export default class Area extends Component {
         />
         <form className="dropdown-form" onSubmit={this.handleSubmit}>
           <AreaDropdown areas={areas} handleInput={this.handleInput} />
-          <button>Go</button>
+          <button className="button-dropdown">Go</button>
         </form>
 
         {selectedReports.map((report) => {

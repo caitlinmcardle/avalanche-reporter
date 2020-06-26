@@ -1,22 +1,48 @@
 .App {
   text-align: center;
   display: grid;
-  grid-template-rows: 100px 40px auto;
+  grid-template-rows: 90px 40px auto;
   grid-template-areas: "header" "nav" "main";
 }
 
-header {
+.title-header {
   grid-area: "header";
-  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  border: none;
+  align-self: center;
 }
+
+.title-h1 {
+  font-size: 40px;
+}
+
 .nav {
   grid-area: "nav";
-  border: 1px solid blue;
+  border: none;
+  display: flex;
+  justify-content: flex-start;
+  background-color: black;
+}
+.nav-ul {
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.nav-li:hover {
+  background-color: #333;
 }
 .main {
   grid-area: "main";
-  border: 1px solid green;
 }
+.nav-link {
+  text-decoration: none;
+  color: white;
+}
+
 ul {
   list-style-type: none;
   margin: 0;
@@ -26,6 +52,30 @@ li {
   display: inline;
   padding: 10px;
 }
+.p-choose-area {
+  font-size: 18px;
+}
+.dropdown-areas {
+  padding: 16px;
+  font-size: 16px;
+  border: 2px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.button-dropdown {
+  background-color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin: 5px;
+}
+.button-dropdown:hover {
+  background-color: black;
+  color: white;
+}
+
 .leaflet-container {
   width: 100vw;
   height: 70vh;

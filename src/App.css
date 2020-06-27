@@ -71,6 +71,9 @@ li {
   border-radius: 10px;
   margin: 5px;
 }
+:focus {
+  outline: none;
+}
 .button-dropdown:hover {
   background-color: black;
   color: white;

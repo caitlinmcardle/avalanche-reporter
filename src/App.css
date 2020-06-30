@@ -84,24 +84,33 @@ li {
   height: 70vh;
   margin: 0;
 }
-.add-report-form {
+/* .add-report-form {
   text-align: left;
   display: flex;
   flex-direction: column;
-}
+} */
 label {
   margin: 10px;
 }
 input {
   margin: 10px;
-  padding: 5px;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid black;
+  border-radius: 10px;
 }
 .form-button {
   margin: 5px;
-  padding: 10px;
-  width: 25%;
-  display: flex;
-  justify-content: center;
+  padding: 12px;
+  width: 15%;
+  border: 2px solid black;
+  background-color: white;
+  border-radius: 10px;
+  font-size: 16px;
+}
+.form-button:hover {
+  background-color: black;
+  color: white;
 }
 .add-report-dropdown {
   width: 25%;

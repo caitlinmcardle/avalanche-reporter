@@ -107,8 +107,8 @@ export default class AddReport extends Component {
       Longitude,
     } = this.state;
     return (
-      <main className="main">
-        <h2>Report an Avalanche:</h2>
+      <main className="main-form">
+        <h2 className="form-title">Report an Avalanche:</h2>
         <form className="add-report-form" onSubmit={this.handleSubmit}>
           <AreaDropdown areas={areas} handleInput={this.handleInput} />
           <label>

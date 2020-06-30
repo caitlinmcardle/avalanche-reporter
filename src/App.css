@@ -84,11 +84,9 @@ li {
   height: 70vh;
   margin: 0;
 }
-/* .add-report-form {
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-} */
+.add-report-form {
+  text-align: center;
+}
 label {
   margin: 10px;
 }
@@ -99,6 +97,28 @@ input {
   border: 1px solid black;
   border-radius: 10px;
 }
+
+.form-button:hover {
+  background-color: black;
+  color: white;
+}
+
+.input-fields {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.tableRow {
+  display: table-row;
+}
+label {
+  display: table-cell;
+}
+input {
+  display: table-cell;
+}
 .form-button {
   margin: 5px;
   padding: 12px;
@@ -107,16 +127,4 @@ input {
   background-color: white;
   border-radius: 10px;
   font-size: 16px;
-}
-.form-button:hover {
-  background-color: black;
-  color: white;
-}
-.add-report-dropdown {
-  width: 25%;
-  margin: 10px;
-  text-align: center;
-}
-.add-dropdown-label {
-  margin: 10px;
 }

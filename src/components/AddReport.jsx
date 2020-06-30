@@ -108,140 +108,155 @@ export default class AddReport extends Component {
     } = this.state;
     return (
       <main className="main-form">
-        <h2 className="form-title">Report an Avalanche:</h2>
+        {/* <h2 className="form-title">Report an Avalanche:</h2> */}
         <form className="add-report-form" onSubmit={this.handleSubmit}>
           <AreaDropdown areas={areas} handleInput={this.handleInput} />
-          <label>
-            Date
-            <input
-              type="date"
-              name="Date"
-              onChange={this.handleInput}
-              value={Date}
-              required
-            />
-          </label>
-          <label>
-            Time
-            <input
-              type="time"
-              name="Time"
-              onChange={this.handleInput}
-              value={Time}
-              required
-            />
-          </label>
-          <label>
-            Size
-            <input
-              type="float"
-              name="Size"
-              onChange={this.handleInput}
-              value={Size}
-              required
-            />
-          </label>
+          <section className="input-fields">
+            <p className="tableRow">
+              <label for="date">Date</label>
+              <input
+                id="date"
+                type="date"
+                name="Date"
+                onChange={this.handleInput}
+                value={Date}
+                required
+              />
+            </p>
+            <p className="tableRow">
+              <label for="time">Time</label>
+              <input
+                id="time"
+                type="time"
+                name="Time"
+                onChange={this.handleInput}
+                value={Time}
+                required
+              />
+            </p>
+            <p className="tableRow">
+              <label for="size">Size</label>
+              <input
+                id="size"
+                type="float"
+                name="Size"
+                onChange={this.handleInput}
+                value={Size}
+                required
+              />
+            </p>
+            <p className="tableRow">
+              <label for="age">Age</label>
+              <input
+                id="age"
+                type="number"
+                name="Age"
+                onChange={this.handleInput}
+                value={Age}
+                required
+              />
+            </p>
+            <p className="tableRow">
+              <label for="elevation">Elevation</label>
+              <input
+                ud="elevation"
+                type="text"
+                name="Elevation"
+                onChange={this.handleInput}
+                value={Elevation}
+                required
+              />
+            </p>
+            <p className="tableRow">
+              <label for="trigger">Trigger</label>
+              <input
+                id="trigger"
+                type="text"
+                name="Trigger"
+                onChange={this.handleInput}
+                value={Trigger}
+                required
+              />
+            </p>
+            <p className="tableRow">
+              <label for="type">Type</label>
+              <input
+                id="type"
+                type="text"
+                name="Type"
+                onChange={this.handleInput}
+                value={Type}
+                required
+              />
+            </p>
+            <p className="tableRow">
+              <label for="aspect">Aspect</label>
+              <input
+                id="aspect"
+                type="text"
+                name="Aspect"
+                onChange={this.handleInput}
+                value={Aspect}
+                required
+              />
+            </p>
+            <p className="tableRow">
+              <label for="depth">Depth</label>
+              <input
+                id="depth"
+                type="number"
+                name="Depth"
+                onChange={this.handleInput}
+                value={Depth}
+                required
+              />
+            </p>
+            <p className="tableRow">
+              <label for="width">Width</label>
+              <input
+                id="width"
+                type="number"
+                name="Width"
+                onChange={this.handleInput}
+                value={Width}
+                required
+              />
+            </p>
+            <p className="tableRow">
+              <label for="path">Path </label>
+              <input
+                id="path"
+                type="number"
+                name="Path"
+                onChange={this.handleInput}
+                value={Path}
+                required
+              />
+            </p>
+            <p className="tableRow">
+              <label for="latitude">Latitude</label>
+              <input
+                id="latitude"
+                type="float"
+                name="Latitude"
+                onChange={this.handleInput}
+                value={Latitude}
+                required
+              />
+            </p>
+            <p className="tableRow">
+              <label for="longitude">Longitude</label>
+              <input
+                id="longitude"
+                type="float"
+                name="Longitude"
+                onChange={this.handleInput}
+                value={Longitude}
+                required
+              />
+            </p>
+          </section>
 
-          <label>
-            Age
-            <input
-              type="number"
-              name="Age"
-              onChange={this.handleInput}
-              value={Age}
-              required
-            />
-          </label>
-          <label>
-            Elevation
-            <input
-              type="text"
-              name="Elevation"
-              onChange={this.handleInput}
-              value={Elevation}
-              required
-            />
-          </label>
-          <label>
-            Trigger
-            <input
-              type="text"
-              name="Trigger"
-              onChange={this.handleInput}
-              value={Trigger}
-              required
-            />
-          </label>
-          <label>
-            Type
-            <input
-              type="text"
-              name="Type"
-              onChange={this.handleInput}
-              value={Type}
-              required
-            />
-          </label>
-          <label>
-            Aspect
-            <input
-              type="text"
-              name="Aspect"
-              onChange={this.handleInput}
-              value={Aspect}
-              required
-            />
-          </label>
-          <label>
-            Depth
-            <input
-              type="number"
-              name="Depth"
-              onChange={this.handleInput}
-              value={Depth}
-              required
-            />
-          </label>
-          <label>
-            Width
-            <input
-              type="number"
-              name="Width"
-              onChange={this.handleInput}
-              value={Width}
-              required
-            />
-          </label>
-          <label>
-            Path
-            <input
-              type="number"
-              name="Path"
-              onChange={this.handleInput}
-              value={Path}
-              required
-            />
-          </label>
-          <label>
-            Latitude
-            <input
-              type="float"
-              name="Latitude"
-              onChange={this.handleInput}
-              value={Latitude}
-              required
-            />
-          </label>
-          <label>
-            Longitude
-            <input
-              type="float"
-              name="Longitude"
-              onChange={this.handleInput}
-              value={Longitude}
-              required
-            />
-          </label>
           <button className="form-button" type="submit">
             Add Report
           </button>

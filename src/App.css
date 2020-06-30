@@ -1,21 +1,8 @@
 .App {
   text-align: center;
   display: grid;
-  grid-template-rows: 90px 40px auto;
-  grid-template-areas: "header" "nav" "main";
-}
-
-.title-header {
-  grid-area: "header";
-  display: flex;
-  justify-content: center;
-  border: none;
-  align-self: center;
-}
-
-.title-h1 {
-  font-size: 40px;
-  color: black;
+  grid-template-rows: 40px auto;
+  grid-template-areas: "nav" "main";
 }
 
 .nav {
@@ -89,7 +76,7 @@ li {
 
 .leaflet-container {
   width: 100vw;
-  height: 70vh;
+  height: 80vh;
   margin: 0;
 }
 .add-report-form {

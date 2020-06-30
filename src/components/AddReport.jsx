@@ -108,7 +108,7 @@ export default class AddReport extends Component {
     } = this.state;
     return (
       <main className="main-form">
-        {/* <h2 className="form-title">Report an Avalanche:</h2> */}
+        <h2 className="form-title">Report an Avalanche:</h2>
         <form className="add-report-form" onSubmit={this.handleSubmit}>
           <AreaDropdown areas={areas} handleInput={this.handleInput} />
           <section className="input-fields">

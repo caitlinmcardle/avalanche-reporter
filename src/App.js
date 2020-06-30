@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
 import { Router } from "@reach/router";
-import Title from "./components/Title";
 import NavBar from "./components/NavBar";
 import Area from "./components/Area";
 import ReportList from "./components/ReportList";
@@ -13,7 +12,6 @@ import ErrorDisplayer from "./components/ErrorDisplayer";
 function App() {
   return (
     <div className="App">
-      <Title />
       <NavBar />
       <Router className="router">
         <Area path="/" />

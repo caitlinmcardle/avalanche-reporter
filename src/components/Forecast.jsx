@@ -54,14 +54,21 @@ export default class Forecast extends Component {
           <AreaDropdown areas={areas} handleInput={this.handleInput} />
           <button className="button-dropdown">Go</button>
         </form>
-        {forecasts.map(({ id, danger_level, mountain_area }) => (
-          <article key={id}>
-            <h3>
-              {mountain_area}: {danger_level.name}
-            </h3>
-            <p>{danger_level.advice}</p>
-          </article>
-        ))}
+        <table className="forecast-table">
+          <tr>
+            <th>Mountain Area</th>
+            <th>Danger Level</th>
+            <th>Advice</th>
+          </tr>
+
+          {forecasts.map(({ danger_level, mountain_area }) => (
+            <tr>
+              <td>{mountain_area}</td>
+              <td>{danger_level.name}</td>
+              <td>{danger_level.advice}</td>
+            </tr>
+          ))}
+        </table>
       </main>
     );
   }

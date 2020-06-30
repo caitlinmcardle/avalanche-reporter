@@ -11,6 +11,7 @@ export default class Forecast extends Component {
     selectedAreaId: "1",
     isLoading: true,
     err: null,
+    gotForecast: false,
   };
 
   componentDidMount() {
@@ -34,7 +35,7 @@ export default class Forecast extends Component {
       .getForecast(this.state.selectedAreaId)
       .then(({ data }) =>
         this.setState((currentState) => {
-          return { forecasts: data };
+          return { forecasts: data, gotForecast: true };
         })
       )
       .catch((error) =>
@@ -44,7 +45,7 @@ export default class Forecast extends Component {
 
   render() {
     if (this.state.isLoading) return <Loader />;
-    const { areas, forecasts, err } = this.state;
+    const { areas, forecasts, err, gotForecast } = this.state;
     if (err) return <ErrorDisplayer err={err} />;
 
     return (
@@ -54,21 +55,23 @@ export default class Forecast extends Component {
           <AreaDropdown areas={areas} handleInput={this.handleInput} />
           <button className="button-dropdown">Go</button>
         </form>
-        <table className="forecast-table">
-          <tr>
-            <th>Mountain Area</th>
-            <th>Danger Level</th>
-            <th>Advice</th>
-          </tr>
-
-          {forecasts.map(({ danger_level, mountain_area }) => (
+        {gotForecast && (
+          <table className="forecast-table">
             <tr>
-              <td>{mountain_area}</td>
-              <td>{danger_level.name}</td>
-              <td>{danger_level.advice}</td>
+              <th>Mountain Area</th>
+              <th>Danger Level</th>
+              <th>Advice</th>
             </tr>
-          ))}
-        </table>
+
+            {forecasts.map(({ danger_level, mountain_area }) => (
+              <tr>
+                <td>{mountain_area}</td>
+                <td>{danger_level.name}</td>
+                <td>{danger_level.advice}</td>
+              </tr>
+            ))}
+          </table>
+        )}
       </main>
     );
   }

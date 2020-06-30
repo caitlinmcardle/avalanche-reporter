@@ -52,7 +52,7 @@ export default class Forecast extends Component {
         <h2>Find a forecast:</h2>
         <form className="dropdown-form" onSubmit={this.handleSubmit}>
           <AreaDropdown areas={areas} handleInput={this.handleInput} />
-          <button>Go</button>
+          <button className="button-dropdown">Go</button>
         </form>
         {forecasts.map(({ id, danger_level, mountain_area }) => (
           <article key={id}>
